@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import {CoffeeLogo} from '../../assets'
+/* eslint-disable react/prop-types */
+import React from "react";
+import { Link } from "react-router-dom";
+import { CoffeeLogo, Search, Message, ProfileNav } from "../assets";
 
-function NavbarMain({home, product, cart, history}) {
+function NavbarMain({ home, product, cart, history }) {
   return (
     <>
       <nav className="flex flex-row py-10 justify-between items-center">
@@ -16,7 +17,7 @@ function NavbarMain({home, product, cart, history}) {
               <Link className={home} to="/">Home</Link>
             </li>
             <li>
-              <Link className={product} to="/items">Product</Link>
+              <Link className={product} to="">Product</Link>
             </li>
             <li>
               <Link className={cart} to="">Your Cart</Link>
@@ -28,20 +29,24 @@ function NavbarMain({home, product, cart, history}) {
         </div>
         <div className="flex flex-row items-center space-x-5">
           <div>
-            <Link className="font-medium" to="/login">
-              Login
+            <Link>
+              <img src={Search} alt="" />
             </Link>
           </div>
           <div>
-            <Link className="bg-yellow-400 px-8 py-3 rounded-full font-medium text-yellow-900"
-              to="/register">
-              SignUp
+            <Link>
+              <img src={Message} alt="Massege " />
+            </Link>
+          </div>
+          <div >
+            <Link>
+              <img src={ProfileNav} className="rounded-full" alt="Profile Nav" />
             </Link>
           </div>
         </div>
       </nav>
     </>
-  )
+  );
 }
 
-export default NavbarMain
+export default NavbarMain;

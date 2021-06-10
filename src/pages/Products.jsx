@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react'
-import Coupon from '../../components/Coupon'
-import NavbarSec from '../../components/Navbar/NavbarSec'
-import axios from 'axios'
-import CardItem from '../../components/CardItem';
-import { ProductImg } from '../../assets';
+import React, {useEffect, useState} from "react";
+import Coupon from "../components/Coupon";
+import NavbarSec from "../components/NavbarSec";
+import axios from "axios";
+import CardItem from "../components/CardItem";
+import { ProductImg } from "../assets";
 
 function Product() {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:8081/items`).then((res) => {
+    axios.get("http://localhost:8081/items").then((res) => {
       console.log(res.data.results);
       setItems(res.data.results);
     });
@@ -36,7 +36,7 @@ function Product() {
           <div className="px-20 py-16">
             <h5 className="text-black font-semibold -ml-4">
               Terms and Condition
-              </h5>
+            </h5>
             <ol className="text-gray-500 list-decimal text-sm">
               <li>You can only apply 1 coupon per day</li>
               <li>It only for dine in</li>
@@ -50,7 +50,7 @@ function Product() {
             <li>
               <button className="px-2 font-bold text-lg text-yellow-900 border-b-2 border-yellow-900">
                 Favorite Product
-                </button>
+              </button>
             </li>
             <li>
               <button className=" text-lg text-gray-400">Coffee</button>
@@ -75,7 +75,7 @@ function Product() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Product
+export default Product;

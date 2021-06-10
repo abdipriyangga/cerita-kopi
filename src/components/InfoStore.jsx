@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+import React from "react";
 
 function InfoStore({icon, numValue, label}) {
   return (
@@ -9,7 +10,7 @@ function InfoStore({icon, numValue, label}) {
         <p className="text-lg text-gray-500">{label}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default InfoStore
+export default InfoStore;

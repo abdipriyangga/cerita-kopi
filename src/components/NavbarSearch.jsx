@@ -1,5 +1,5 @@
-import React from 'react'
-import {Search} from '../../assets'
+import React from "react";
+import { Search } from "../assets";
 
 function NavbarSearch() {
   return (
@@ -13,7 +13,7 @@ function NavbarSearch() {
         className=" text-gray-900 bg-gray-300 focus:outline-none font-bold text-sm"
       />
     </div>
-  )
+  );
 }
 
-export default NavbarSearch
+export default NavbarSearch;

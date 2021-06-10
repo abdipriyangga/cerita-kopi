@@ -1,5 +1,6 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+/* eslint-disable react/prop-types */
+import React from "react";
+import {Link} from "react-router-dom";
 
 function CardItem({name, img, price, to}) {
   return (
@@ -19,7 +20,7 @@ function CardItem({name, img, price, to}) {
         <h5 className="text-yellow-900 font-medium">IDR {price}</h5>
       </Link>
     </div>
-  )
+  );
 }
 
-export default CardItem
+export default CardItem;

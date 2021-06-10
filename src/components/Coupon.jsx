@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import imgCoupon from '../../assets/images/product-coupon.png'
+import React, { Component } from "react";
+import imgCoupon from "../assets/images/product-coupon.png";
 
 
 class Coupon extends Component {
@@ -19,7 +19,7 @@ class Coupon extends Component {
             </div>
             <p className="text-sm mt-2 text-center w-52">
               Buy 1 Choco Oreo and get 20% off for Cappucino
-        </p>
+            </p>
             <div className="border-t-2 border-dashed border-black w-72 my-5 pt-5 text-center space-y-3">
               <h5>COUPON CODE</h5>
               <h5 className="text-3xl font-bold tracking-wide">CDAAPTNIA</h5>
@@ -30,8 +30,8 @@ class Coupon extends Component {
           <div className="bg-yellow-900 w-5 h-80 rounded-r-xl"></div>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default Coupon
+export default Coupon;

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Search } from '../../assets'
-import NavbarMain from '../../components/Navbar/NavbarMain'
+import React from "react";
+import { Search } from "../assets";
+import NavbarMain from "../components/NavbarMain";
 
 function Home() {
   return (
@@ -17,12 +17,12 @@ function Home() {
         <div className="pt-20 tracking-wide flex-1 flex-col space-y-7">
           <h2 className="text-white text-5xl font-bold leading-tight">
             Start Your Day with <br /> Coffee and Good Meals
-            </h2>
+          </h2>
           <p className="text-white text-lg font-bold leading-relaxed tracking-wide ">
             We provide high quality beans, good taste, and healthy <br />
               meals made by love just for you. Start your day with us <br /> for
               a bigger smile!
-            </p>
+          </p>
           <div className="w-60">
             <button className="focus:outline-none text-red-900 font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg w-full">Get Started</button>
           </div>
@@ -41,7 +41,7 @@ function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
