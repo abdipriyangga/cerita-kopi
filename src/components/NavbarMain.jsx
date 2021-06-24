@@ -35,7 +35,7 @@ function NavbarMain({home, product, cart, history}) {
           </div>
           <div>
             <Link className="bg-yellow-400 px-8 py-3 rounded-full font-medium text-yellow-900"
-              to="/register">
+              to="/signup">
               SignUp
             </Link>
           </div>

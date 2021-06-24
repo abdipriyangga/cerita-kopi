@@ -10,9 +10,21 @@ module.exports = {
         "82": "22rem",
         "83": "23rem",
       },
+      height: {
+        "97" : "28rem",
+        "98" : "32rem",
+        "99" : "36rem",
+        "100" : "40rem",
+        "101" : "44rem",
+        "102" : "48rem",
+        "103" : "52rem",
+        "104" : "56rem",
+        "105" : "60rem"
+      }
     },
     backgroundImage: {
-      "bg-banner": "url('/src/assets/images/banner.png')"
+      "bg-banner": "url('/src/assets/images/banner.png')",
+      "auth"  : "url('/src/assets/images/sideImg.png')"
     },
     backgroundSize: {
       auto: "auto",
