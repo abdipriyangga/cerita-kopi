@@ -4,15 +4,25 @@ import NavbarSec from "../components/NavbarSec";
 import axios from "axios";
 import CardItem from "../components/CardItem";
 import { ProductImg } from "../assets";
+import Footer from "../components/Footer";
 
 function Product() {
   const [items, setItems] = useState([]);
+  const [setCategory] = useState([]);
+
+  const getItemByCategory = (id) => {
+    axios.get(`http://localhost:8081/items/category/${id}`).then((res) => {
+      setCategory(res.data.results);
+    });
+  };
   useEffect(() => {
     axios.get("http://localhost:8081/items").then((res) => {
       console.log(res.data.results);
       setItems(res.data.results);
     });
-  }, []);
+  }, 
+  getItemByCategory(),[]);
+  
   return (
     <div>
       <header className="px-32 sticky top-0 bg-white">
@@ -32,7 +42,7 @@ function Product() {
             </p>
             <Coupon />
           </div>
-          <button className="focus:outline-none ml-28 mt-10 text-white font-bold text-lg bg-yellow-900 px-16 py-4 rounded-lg"> Apply Coupon</button>
+          <button className="focus:outline-none ml-28 mt-10 text-white font-bold text-lg bg-yellow-900 px-16 py-4 rounded-lg lg:ml-9"> Apply Coupon</button>
           <div className="px-20 py-16">
             <h5 className="text-black font-semibold -ml-4">
               Terms and Condition
@@ -48,7 +58,7 @@ function Product() {
         <div className="flex-1 bg-white h-full border-t-2 border-gray-300">
           <ul className="my-8 flex flex-row space-x-24 justify-center">
             <li>
-              <button className="px-2 font-bold text-lg text-yellow-900 border-b-2 border-yellow-900">
+              <button onClick={getItemByCategory()} className="px-2 font-bold text-lg text-yellow-900 border-b-2 border-yellow-900">
                 Favorite Product
               </button>
             </li>
@@ -68,12 +78,13 @@ function Product() {
           <div className="grid grid-cols-4 grid-rows-3 gap-7 px-32">
             {items.map((item) => {
               return (
-                <CardItem key={item.id} to={`/items/${item.id}`} name={item.product_name} price={item.price} img={ProductImg} />
+                <CardItem key={item.id} id={`/items/${item.id}`} name={item.product_name} price={item.price} img={ProductImg} />
               );
             })}
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

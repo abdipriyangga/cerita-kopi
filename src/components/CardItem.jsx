@@ -2,11 +2,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-function CardItem({name, img, price, to}) {
+function CardItem({name, img, price, id}) {
   return (
     <div>
       <Link
-        to={to}
+        to={id}
         className="space-y-2 shadow-xl rounded-2xl bg-white w-full h-full flex flex-col justify-center items-center py-5"
       >
         <img
