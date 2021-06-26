@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, {useEffect, useState} from "react";
 import Coupon from "../components/Coupon";
 import NavbarSec from "../components/NavbarSec";
@@ -6,22 +7,24 @@ import CardItem from "../components/CardItem";
 import { ProductImg } from "../assets";
 import Footer from "../components/Footer";
 
+const { REACT_APP_URL: URL } = process.env;
+
 function Product() {
   const [items, setItems] = useState([]);
-  const [setCategory] = useState([]);
+  // const [setCategory] = useState([]);
 
-  const getItemByCategory = (id) => {
-    axios.get(`http://localhost:8081/items/category/${id}`).then((res) => {
-      setCategory(res.data.results);
-    });
-  };
+  // const getItemByCategory = (id) => {
+  //   axios.get(`http://localhost:8081/items/category/${id}`).then((res) => {
+  //     setCategory(res.data.results);
+  //   });
+  // };
   useEffect(() => {
-    axios.get("http://localhost:8081/items").then((res) => {
+    axios.get(`${URL}/items`).then((res) => {
       console.log(res.data.results);
       setItems(res.data.results);
     });
   }, 
-  getItemByCategory(),[]);
+  []);
   
   return (
     <div>
@@ -58,7 +61,7 @@ function Product() {
         <div className="flex-1 bg-white h-full border-t-2 border-gray-300">
           <ul className="my-8 flex flex-row space-x-24 justify-center">
             <li>
-              <button onClick={getItemByCategory()} className="px-2 font-bold text-lg text-yellow-900 border-b-2 border-yellow-900">
+              <button className="px-2 font-bold text-lg text-yellow-900 border-b-2 border-yellow-900">
                 Favorite Product
               </button>
             </li>

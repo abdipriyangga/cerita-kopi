@@ -1,15 +1,18 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
 import NavbarSec from "../components/NavbarSec";
 import { useParams } from "react-router";
 import axios from "axios";
 import { ProductCold } from "../assets";
 
+const { REACT_APP_URL: URL } = process.env;
+
 function ProductDetail() {
   const [data, setData] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:8081/items/${id}`)
+    axios.get(`${URL}/items/${id}`)
       .then((response) => {
         console.log(response.data.results);
         setData(response.data.results);

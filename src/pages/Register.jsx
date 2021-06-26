@@ -15,7 +15,7 @@ function Register() {
               <p>Cerita Kopi</p>
             </div>
             <div className="bg-yellow-400 p-10 py-3 rounded-full font-bold text-yellow-900 shadow-lg">
-              <Link to="/signin">
+              <Link to="/login">
                 Login
               </Link>
             </div>
