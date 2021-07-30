@@ -34,6 +34,8 @@ module.exports = {
     "semi": [
       "error",
       "always"
-    ]
-  }
+    ],
+    "react/prop-types": "off"
+  },
+  "parser": "babel-eslint"
 };

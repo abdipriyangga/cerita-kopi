@@ -33,10 +33,12 @@ function Login(props) {
         <div className="bg-auth bg-cover w-1/2 h-105"></div>
         <div>
           <div className="flex flex-row space-x-96 p-10">
-            <div className="w-40 flex space-x-3 justify-center items-center font-bold">
-              <img src={CoffeeLogo} alt="logo-kopi" />
-              <p>Cerita Kopi</p>
-            </div>
+            <Link to="/">
+              <div className="w-40 flex space-x-3 justify-center items-center font-bold">
+                <img src={CoffeeLogo} alt="logo-kopi" />
+                <p>Cerita Kopi</p>
+              </div>
+            </Link>
             <div className="bg-yellow-400 p-10 py-3 rounded-full font-bold text-yellow-900 shadow-lg">
               <Link to="/signup">
                 SignUp
@@ -46,7 +48,7 @@ function Login(props) {
           <div>
             <p className="text-yellow-900 font-bold text-xl text-center">Sign In</p>
           </div>
-          <div className="p-12">
+          <div className="p-12 mx-8">
             <form onSubmit={onLogin} className="space-y-8">
               <div>
                 <label className="text-gray-500 font-bold text-lg">Email Address :
@@ -70,7 +72,7 @@ function Login(props) {
                 </Link>
               </div>
               <div>
-                <button className="focus:outline-none text-red-900 font-bold text-lg bg-yellow-400 py-4 rounded-lg w-full" type="submit">Sign In</button>
+                <button className="focus:outline-none text-yellow-900 font-bold text-lg bg-yellow-400 py-4 rounded-lg w-full" type="submit">Sign In</button>
                 <div className="py-3">
                   <button className="focus:outline-none text-black font-bold text-lg bg-white border-2 border-gray-400 py-4 rounded-lg w-full shadow-lg">
                     <img src={Google} alt="google-logo" className="px-40" />
@@ -102,7 +104,7 @@ function Login(props) {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 const mapDispatchToProps = { toggleAuth, authLogin };
 

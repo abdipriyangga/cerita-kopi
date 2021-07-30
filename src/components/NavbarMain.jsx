@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import {CoffeeLogo} from "../assets";
+import { CoffeeLogo, Search, Message, ProfileNav} from "../assets";
 
-function NavbarMain({home, product, cart, history}) {
+function NavbarMain({home, product, cart, history, auth}) {
   return (
     <>
       <nav className="flex flex-row py-10 justify-between items-center">
@@ -28,21 +29,47 @@ function NavbarMain({home, product, cart, history}) {
           </ul>
         </div>
         <div className="flex flex-row items-center space-x-5">
-          <div>
-            <Link className="font-medium" to="/login">
-              Login
-            </Link>
-          </div>
-          <div>
-            <Link className="bg-yellow-400 px-8 py-3 rounded-full font-medium text-yellow-900"
-              to="/signup">
-              SignUp
-            </Link>
-          </div>
+          {auth.token !== null ? (
+            <>
+              <div>
+                <Link>
+                  <img src={Search} alt="" />
+                </Link>
+              </div>
+              <div>
+                <Link>
+                  <img src={Message} alt="Massege " />
+                </Link>
+              </div>
+              <div >
+                <Link>
+                  <img src={ProfileNav} className="rounded-full" alt="Profile Nav" />
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <Link className="font-medium" to="/login">
+                    Login
+                </Link>
+              </div>
+              <div>
+                <Link className="bg-yellow-400 px-8 py-3 rounded-full font-medium text-yellow-900"
+                  to="/signup">
+                    SignUp
+                </Link>
+              </div>
+            </>
+          )};
         </div>
       </nav>
     </>
   );
 }
 
-export default NavbarMain;
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(NavbarMain);

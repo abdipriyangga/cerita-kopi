@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, {useEffect, useState} from "react";
 import Coupon from "../components/Coupon";
-import NavbarSec from "../components/NavbarSec";
+import NavbarMain from "../components/NavbarMain";
 import axios from "axios";
 import CardItem from "../components/CardItem";
 import { ProductImg } from "../assets";
@@ -29,7 +29,7 @@ function Product() {
   return (
     <div>
       <header className="px-32 sticky top-0 bg-white">
-        <NavbarSec
+        <NavbarMain
           home="text-gray-500"
           product="text-yellow-900 font-bold"
           cart="text-gray-500"
