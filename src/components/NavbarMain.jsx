@@ -2,9 +2,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { CoffeeLogo, Search, Message, ProfileNav} from "../assets";
+import { CoffeeLogo, Search, Message, ProfileNav } from "../assets";
 
-function NavbarMain({home, product, cart, history, auth}) {
+function NavbarMain({ home, product, cart, history, auth }) {
   return (
     <>
       <nav className="flex flex-row py-10 justify-between items-center">
@@ -37,7 +37,7 @@ function NavbarMain({home, product, cart, history, auth}) {
                 </Link>
               </div>
               <div>
-                <Link>
+                <Link to="/chats">
                   <img src={Message} alt="Massege " />
                 </Link>
               </div>
@@ -51,13 +51,13 @@ function NavbarMain({home, product, cart, history, auth}) {
             <>
               <div>
                 <Link className="font-medium" to="/login">
-                    Login
+                  Login
                 </Link>
               </div>
               <div>
                 <Link className="bg-yellow-400 px-8 py-3 rounded-full font-medium text-yellow-900"
                   to="/signup">
-                    SignUp
+                  SignUp
                 </Link>
               </div>
             </>

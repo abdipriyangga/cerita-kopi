@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { http } from "../../helpers/http";
-const {REACT_APP_URL: URL} = process.env;
+const { REACT_APP_URL: URL } = process.env;
 
 const getProducts = (url) => {
   if (!url) {
@@ -11,9 +11,12 @@ const getProducts = (url) => {
       dispatch({
         type: "SET_GET_PRODUCTS",
         payload: {
-          products: data.results
+          products: data.results,
+          pageInfo: data.pageInfo
         },
+
       });
+      console.log(data);
     };
   } else {
     return async (dispatch) => {
@@ -23,7 +26,8 @@ const getProducts = (url) => {
       dispatch({
         type: "SET_NEXT_PRODUCTS",
         payload: {
-          products: data.results
+          products: data.results,
+          pageInfo: data.pageInfo
         },
       });
     };

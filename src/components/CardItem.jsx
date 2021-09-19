@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ProductImg } from "../assets";
 
-function CardItem({name, img, price, id}) {
+function CardItem({ name, img, price, id }) {
   return (
     <div>
       <Link
@@ -11,7 +12,7 @@ function CardItem({name, img, price, id}) {
       >
         <img
           className="w-28 h-28 rounded-full object-cover"
-          src={img}
+          src={img ? img : ProductImg}
           alt="food"
         />
         <h4 className="text-center flex-1 font-bold w-20 flex justify-center text-xl leading-tight">

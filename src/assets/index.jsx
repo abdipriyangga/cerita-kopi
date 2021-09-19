@@ -7,5 +7,7 @@ import ProductImg from "../assets/images/product-right.png";
 import Google from "../assets/icons/google.svg";
 import ProductCold from "../assets/images/cold-brew.png";
 import Teamwork from "../assets/images/teamwork.png";
+import BackgroundChat from "../assets/images/bgchats.png";
+import DefaultPic from "../assets/images/Default_pic.svg";
 
-export {CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork};
+export {CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork, BackgroundChat, DefaultPic};

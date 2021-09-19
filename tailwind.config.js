@@ -53,7 +53,8 @@ module.exports = {
     },
     backgroundImage: {
       "bg-banner": "url('/src/assets/images/banner.png')",
-      "auth"  : "url('/src/assets/images/sideImg.png')"
+      "auth"  : "url('/src/assets/images/sideImg.png')",
+      "chat"  : "url('/src/assets/images/bgchats.png')"
     },
     backgroundSize: {
       auto: "auto",

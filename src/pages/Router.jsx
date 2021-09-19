@@ -6,6 +6,7 @@ import ProductDetail from "./ProductDetail";
 import Register from "./Register";
 import Login from "./Login";
 import ForgotPass from "./ForgotPass";
+import Chats from "./Chats";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/signup" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/forgotpassword" component={ForgotPass} />
+        <Route path="/chats" component={Chats} />
       </Switch>
     </BrowserRouter>
   );
