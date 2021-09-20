@@ -46,6 +46,17 @@ function Product(props) {
       });
     }
   };
+  const loadMoreCategory = () => {
+    const { nextPage } = props.category.pageInfo;
+    if (nextPage !== null) {
+      props.getProductCategory(null, nextPage);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "no more items"
+      });
+    }
+  };
   return (
     <div>
       <header className="px-32 sticky top-0 bg-white">
@@ -107,7 +118,7 @@ function Product(props) {
               console.log("name product atas : ", products.name);
               console.log("===================================="); */}
               return (
-                <CardItem key={products.id} id={`/items/${products.id}`} name={products.product_name} price={products.price} img={products.images === null || undefined ? ProductImg : `${URL}${products.images}`} />
+                <CardItem key={products.id} id={`/items/${products.id}`} name={products.name} price={products.price} img={products.images === null || undefined ? ProductImg : `${URL}${products.images}`} />
               );
             }) : productCategory.map((prod) => {
 
@@ -127,9 +138,16 @@ function Product(props) {
               }
             })}
           </div>
-          <div className="my-10 flex justify-center items-center">
-            <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
-          </div>
+          {props.category.productCategory < 1 ? (
+            <div className="my-10 flex justify-center items-center">
+              <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+            </div>
+          ) : (
+            <div className="my-10 flex justify-center items-center">
+              <button onClick={loadMoreCategory} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+            </div>
+          )}
+
         </div>
       </section>
       <Footer />

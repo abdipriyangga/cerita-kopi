@@ -26,7 +26,8 @@ const getProductCategory = (id, url) => {
         dispatch({
           type: "SET_PRODUCT_CATEGORY",
           payload: {
-            productCategory: data.results
+            productCategory: data.results,
+            pageInfo: data.pageInfo
           },
         });
       };
@@ -38,7 +39,8 @@ const getProductCategory = (id, url) => {
         dispatch({
           type: "SET_NEXT_PRODUCTS_CATEGORY",
           payload: {
-            productCategory: data.results
+            productCategory: data.results,
+            pageInfo: data.pageInfo
           },
         });
       };

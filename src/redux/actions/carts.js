@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
 
+import Swal from "sweetalert2";
+
 const addProducts = (data) => {
   return async (dispatch) => {
     dispatch({
       type: "SET_CART_ADD_ITEM",
       payload: data
     });
-    window.alert("product added to cart");
+    Swal.fire("Yeay!", "Your product is added to cart");
   };
 };
 

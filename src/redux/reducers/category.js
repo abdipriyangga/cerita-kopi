@@ -12,17 +12,19 @@ const category = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload.category,
+
       };
     case "SET_PRODUCT_CATEGORY":
       return {
         ...state,
         productCategory: action.payload.productCategory,
-
+        pageInfo: action.payload.pageInfo,
       };
     case "SET_NEXT_PRODUCTS_CATEGORY":
       return {
         ...state,
-        productCategory: [...state.productCategory, ...action.payload.productCategory]
+        productCategory: [...state.productCategory, ...action.payload.productCategory],
+        pageInfo: action.payload.pageInfo,
       };
     case "SET_PRODUCTS_CATEGORY_FAILED":
       return {

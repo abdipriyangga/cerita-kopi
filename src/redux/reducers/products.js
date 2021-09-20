@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 const initialState = {
   data: [],
-  details: {},
+  detail: {},
   pageInfo: {}
 };
 
@@ -22,7 +22,7 @@ const products = (state = initialState, action) => {
     case "SET_GET_DETAILS":
       return {
         ...state,
-        details: action.payload,
+        detail: action.payload,
       };
     default:
       return {

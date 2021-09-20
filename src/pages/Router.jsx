@@ -7,6 +7,7 @@ import Register from "./Register";
 import Login from "./Login";
 import ForgotPass from "./ForgotPass";
 import Chats from "./Chats";
+import Payment from "./Payment";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/login" component={Login} />
         <Route path="/forgotpassword" component={ForgotPass} />
         <Route path="/chats" component={Chats} />
+        <Route path="/payment" component={Payment} />
       </Switch>
     </BrowserRouter>
   );

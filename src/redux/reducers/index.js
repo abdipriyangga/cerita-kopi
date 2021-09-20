@@ -5,6 +5,7 @@ import chats from "./chats";
 import users from "./users";
 import products from "./products";
 import category from "./category";
+import payment from "./payment";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   users,
   products,
   category,
+  payment
 });
 
 export default reducer;
