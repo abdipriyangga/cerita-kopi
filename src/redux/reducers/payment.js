@@ -12,6 +12,11 @@ const payment = (state = initialState, action) => {
         items: [...state.items, ...action.payload]
       };
     }
+    case "SET_GOING_TO_LOGIN": {
+      return {
+        ...state,
+      };
+    }
     default: {
       return {
         ...state

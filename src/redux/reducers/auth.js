@@ -3,7 +3,8 @@ const initialState = {
   onAuth: false,
   token: null,
   errMsg: "",
-  sccMsg: ""
+  sccMsg: "",
+  isRegister: false
 };
 
 const auth = (state = initialState, action) => {
@@ -29,6 +30,7 @@ const auth = (state = initialState, action) => {
     case "AUTH_REGISTER": {
       return {
         ...state,
+        isRegister: state.isRegister,
         sccMsg: action.payload
       };
     }

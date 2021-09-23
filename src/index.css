@@ -1,3 +1,122 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+.radio {
+  margin-top: 10px;
+}
+
+.radio .item {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio .item::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid #895537;
+  border-radius: 8px;
+}
+
+.radio input {
+  display: none;
+}
+
+.radio input:checked+.item {
+  background-color: #895537;
+}
+
+.radioGender {
+  margin-top: 10px;
+}
+
+.radioGender .item {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radioGender .item::after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 4px solid #895537;
+  border-radius: 9px;
+}
+
+.radioGender input {
+  display: none;
+}
+
+.radioGender input:checked+.item {
+  background-color: #ffba33;
+}
+
+.checkbox {
+  margin-top: 8px;
+}
+
+.checkbox .item {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox .item::before {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 3px solid #6a4029;
+  border-radius: 3px;
+  margin-top: -12px;
+}
+
+.checkbox input {
+  display: none;
+}
+
+.checkbox input:checked+.item::before {
+  background-color: #6a4029;
+  content: "\2713";
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

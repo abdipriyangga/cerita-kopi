@@ -9,5 +9,8 @@ import ProductCold from "../assets/images/cold-brew.png";
 import Teamwork from "../assets/images/teamwork.png";
 import BackgroundChat from "../assets/images/bgchats.png";
 import DefaultPic from "../assets/images/Default_pic.svg";
+import Card from "../assets/icons/card.png";
+import Bank from "../assets/icons/Bank.png";
+import Cod from "../assets/icons/Cod.png";
 
-export {CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork, BackgroundChat, DefaultPic};
+export { CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork, BackgroundChat, DefaultPic, Card, Bank, Cod };

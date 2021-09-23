@@ -3,15 +3,12 @@
 /* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
-import axios from "axios";
-import { ProductCold } from "../assets";
 import Footer from "../components/Footer";
-import Counter from "../components/Counter";
 import NavbarMain from "../components/NavbarMain";
 import { addProducts } from "../redux/actions/carts";
 import { getDetailProducts } from "../redux/actions/products";
 import { connect } from "react-redux";
-import { toCheckout } from "../redux/actions/payment";
+import { toCheckout, cannotToCheckout } from "../redux/actions/payment";
 import SectionBar from "../components/SectionBar";
 const { REACT_APP_URL: URL } = process.env;
 
@@ -23,7 +20,10 @@ function ProductDetail(props) {
   const [price, setPrice] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [variant, setVariant] = useState(null);
+  const { token } = props.auth;
+  const [data, setData] = useState([]);
   // const {payment} = props.payment;
+  // console.log("ini detail: ", detail);
   useEffect(() => {
     if (detail?.variants) {
       console.log("changing");
@@ -33,7 +33,7 @@ function ProductDetail(props) {
       setVariant(data);
       console.log("data", data);
     }
-  }, [detail?.variants]);
+  }, [detail.variants]);
 
   useEffect(() => {
     if (detail?.base_price) {
@@ -53,6 +53,7 @@ function ProductDetail(props) {
     setPrice(getPrice);
     setSelectedVariant(getPrice);
   };
+
   return (
     <>
       <div className="bg-gray-200 h-full">
@@ -67,7 +68,7 @@ function ProductDetail(props) {
         <div className="p-10 mt-5 ml-20">
           <span>Favorite & Promo {""}</span><span className="text-yellow-800"> {">"} {detail?.name}</span>
         </div>
-        <section className="h-full">
+        <section className="h-full px-20">
           <div className="ml-10 space-x-24 flex flex-wrap ">
             <div className="">
               <img src={detail?.images} alt="product-image" className="rounded-full w-72 ml-20" />
@@ -76,7 +77,11 @@ function ProductDetail(props) {
                 <p className="text-center text-xl font-medium">IDR {price.toLocaleString("en")}</p>
               </div>
               <div className="ml-20 mt-10 space-y-5">
-                <button onClick={() => props.addProducts(variant)} className="focus:outline-none text-white font-bold text-lg bg-yellow-900 py-4 rounded-lg w-full">Add to Cart</button>
+                {token === null ?
+                  <button disabled={true} onClick={() => props.addProducts(variant)} className="focus:outline-none text-white font-bold text-lg bg-yellow-900 py-4 rounded-lg w-full">Add to Cart</button> :
+                  <button onClick={() => props.addProducts(variant)} className="focus:outline-none text-white font-bold text-lg bg-yellow-900 py-4 rounded-lg w-full">Add to Cart</button>
+                }
+
                 <button className="focus:outline-none text-yellow-900 font-bold text-lg bg-yellow-400 py-4 rounded-lg w-full">Ask a Staff</button>
               </div>
             </div>
@@ -119,30 +124,33 @@ function ProductDetail(props) {
           </div>
         </section>
         <section className="flex">
-          <SectionBar
+          {token === null ? <SectionBar
             variant={variant || []}
-            onClick={() => props.toCheckout(variant)}
+            onClick={() => props.cannotToCheckout()}
             ProductsName={detail?.name}
             images={detail?.images}
             type="counter"
             stateValue={0}
             max={detail?.quantity}
-          />
-          {/* <div className="flex w-100 bg-white absolute -mt-16 mx-56 p-5 rounded-lg space-x-16 shadow-md">
-            <div>
-              <img src={detail?.images} alt="product-image" className="rounded-full w-20 ml-10" />
-            </div>
-            <div className="mt-3">
-              <h4>{detail?.name}</h4>
-              <h5></h5>
-            </div>
-            <div>
-              <Counter />
-            </div>
-          </div>
-          <div className="absolute mx-104 -mt-16">
-            <button onClick={() => props.addProducts(variant)} className="focus:outline-none text-white font-bold text-2xl bg-yellow-400 py-4 rounded-lg w-72 h-29">Checkout</button>
-          </div> */}
+          /> : <SectionBar
+            variant={variant || []}
+            onClick={() => props.addProducts(variant)}
+            ProductsName={detail?.name}
+            images={detail?.images}
+            type="counter"
+            stateValue={0}
+            max={detail?.quantity}
+          />}
+          {/* <SectionBar
+            key={detail?.id}
+            variant={variant || []}
+            onClick={() => props.addProducts(detail)}
+            ProductsName={detail?.name}
+            images={detail?.images}
+            type="counter"
+            stateValue={0}
+            max={detail?.quantity}
+          /> */}
         </section>
         <Footer />
       </div>
@@ -151,11 +159,11 @@ function ProductDetail(props) {
 }
 const mapStateToProps = (state) => ({
   products: state.products,
-  payment: state.payment
+  auth: state.auth
 });
 const mapDispatchToProps = {
   getDetailProducts,
   addProducts,
-  toCheckout
+  cannotToCheckout
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

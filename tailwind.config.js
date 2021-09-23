@@ -29,15 +29,15 @@ module.exports = {
         "84": "24rem",
         "85": "25rem",
         "86": "26rem",
-        "97" : "28rem",
-        "98" : "32rem",
-        "99" : "36rem",
-        "100" : "40rem",
-        "101" : "44rem",
-        "102" : "48rem",
-        "103" : "52rem",
-        "104" : "56rem",
-        "105" : "60rem"
+        "97": "28rem",
+        "98": "32rem",
+        "99": "36rem",
+        "100": "40rem",
+        "101": "44rem",
+        "102": "48rem",
+        "103": "52rem",
+        "104": "56rem",
+        "105": "60rem"
       },
       margin: {
         "97": "28rem",
@@ -53,8 +53,10 @@ module.exports = {
     },
     backgroundImage: {
       "bg-banner": "url('/src/assets/images/banner.png')",
-      "auth"  : "url('/src/assets/images/sideImg.png')",
-      "chat"  : "url('/src/assets/images/bgchats.png')"
+      "auth": "url('/src/assets/images/sideImg.png')",
+      "chat": "url('/src/assets/images/bgchats.png')",
+      "payment": "url('/src/assets/images/bg-payment.png')",
+      "profile": "url('/src/assets/images/bg-profile.png')"
     },
     backgroundSize: {
       auto: "auto",

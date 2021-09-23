@@ -101,7 +101,7 @@ function Product(props) {
               );
             })}
           </ul>
-          <div className="grid grid-cols-4 grid-rows-3 gap-7 px-32">
+          <div className="grid grid-cols-4 grid-rows-7 gap-7 px-32">
             {props.category.productCategory < 1 ? data.map((products) => {
 
               // {console.log("ini item: ",item);
@@ -138,15 +138,17 @@ function Product(props) {
               }
             })}
           </div>
-          {props.category.productCategory < 1 ? (
-            <div className="my-10 flex justify-center items-center">
-              <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
-            </div>
-          ) : (
-            <div className="my-10 flex justify-center items-center">
-              <button onClick={loadMoreCategory} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
-            </div>
-          )}
+          <div className=" flex flex-row justify-center ">
+            {props.category.productCategory < 1 ? (
+              <div className="my-10 flex justify-center items-center">
+                <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+              </div>
+            ) : (
+              <div className="my-10 flex justify-center items-center">
+                <button onClick={loadMoreCategory} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+              </div>
+            )}
+          </div>
 
         </div>
       </section>

@@ -8,7 +8,8 @@ import Login from "./Login";
 import ForgotPass from "./ForgotPass";
 import Chats from "./Chats";
 import Payment from "./Payment";
-
+import PrivateRoute from "../components/PrivateRoute";
+import Profile from "./Profile";
 function Router() {
   return (
     <BrowserRouter>
@@ -20,7 +21,9 @@ function Router() {
         <Route path="/login" component={Login} />
         <Route path="/forgotpassword" component={ForgotPass} />
         <Route path="/chats" component={Chats} />
-        <Route path="/payment" component={Payment} />
+        {/* <Route path="/payment" component={Payment} /> */}
+        <PrivateRoute component={Payment} path="/payment" exact />
+        <PrivateRoute component={Profile} path="/profile" exact />
       </Switch>
     </BrowserRouter>
   );
