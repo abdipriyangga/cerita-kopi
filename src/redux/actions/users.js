@@ -5,17 +5,19 @@ const { REACT_APP_URL: URL } = process.env;
 
 const getUser = (token) => {
   return async (dispatch) => {
-    try{
+    try {
       const { data } = await http(token).get(`${URL}/profile`);
-      console.log(data.results);
+      // console.log(data.results);
       dispatch({
         type: "SET_GET_USER",
         payload: data.results,
       });
-    }catch (err){
+    } catch (error) {
       dispatch(authLogout);
     }
   };
 };
+
+
 
 export { getUser };

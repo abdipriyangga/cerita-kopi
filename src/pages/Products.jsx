@@ -2,17 +2,20 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable indent */
 /* eslint-disable no-undef */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Coupon from "../components/Coupon";
 import NavbarMain from "../components/NavbarMain";
 // import axios from "axios";
 import CardItem from "../components/CardItem";
 import { ProductImg } from "../assets";
 import Footer from "../components/Footer";
-import { getProducts } from "../redux/actions/products";
+import { getProducts, searchProducts } from "../redux/actions/products";
 import { getCategory, getProductCategory } from "../redux/actions/category";
 import { connect } from "react-redux";
 import Swal from "sweetalert2";
+import qs from "querystring";
+import { useHistory, useLocation } from "react-router-dom";
+
 const { REACT_APP_URL: URL } = process.env;
 
 function Product(props) {
@@ -23,7 +26,11 @@ function Product(props) {
   const { data: dataCategory } = props.category;
   console.log("data categroy: ", dataCategory);
   const { productCategory } = props.category;
-
+  const parseQuery = (str) => {
+    return qs.parse(str.slice("1"));
+  };
+  const location = useLocation();
+  const urlSearch = parseQuery(location.search).search;
   useEffect(() => {
     // console.log("ini getProducts action: ", getProducts());
     props.getProducts();
@@ -57,14 +64,37 @@ function Product(props) {
       });
     }
   };
+  const [searchTemp, setSearchTemp] = useState(urlSearch ? urlSearch : "");
+  const [search, setSearch] = useState(urlSearch ? urlSearch : "");
+
+  const history = useHistory();
+
+  const onSearch = (e) => {
+    if (e.key === "Enter") {
+      history.push("/items");
+      setSearchTemp(search);
+      setSearch(searchTemp);
+      props.searchProducts(searchTemp);
+    }
+  };
+  console.log("search", urlSearch);
+
+  useEffect(() => {
+    setSearchTemp(urlSearch);
+  }, [location.search]);
+
   return (
     <div>
-      <header className="px-32 sticky top-0 bg-white">
+      <header className="px-32 bg-white">
         <NavbarMain
           home="text-gray-500"
           product="text-yellow-900 font-bold"
           cart="text-gray-500"
           history="text-gray-500"
+          onKeyDown={onSearch}
+          onChange={(e) => setSearchTemp(e.target.value)}
+          value={searchTemp}
+          onClickSearch={onSearch}
         />
       </header>
       <section className="flex flex-row">
@@ -139,15 +169,24 @@ function Product(props) {
             })}
           </div>
           <div className=" flex flex-row justify-center ">
-            {props.category.productCategory < 1 ? (
-              <div className="my-10 flex justify-center items-center">
-                <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
-              </div>
-            ) : (
-              <div className="my-10 flex justify-center items-center">
-                <button onClick={loadMoreCategory} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
-              </div>
-            )}
+            {urlSearch ? <div className="my-10 flex justify-center items-center">
+              <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+            </div> :
+              <>
+                {
+                  props.category.productCategory < 1 ? (
+                    <div className="my-10 flex justify-center items-center">
+                      <button onClick={loadMore} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+                    </div>
+                  ) : (
+                    <div className="my-10 flex justify-center items-center">
+                      <button onClick={loadMoreCategory} className="focus:outline-none ml-28  text-white font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg lg:ml-9" >LoadMore</button>
+                    </div>
+                  )
+                }
+              </>
+            }
+
           </div>
 
         </div>
@@ -165,6 +204,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getProducts,
   getCategory,
-  getProductCategory
+  getProductCategory,
+  searchProducts
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

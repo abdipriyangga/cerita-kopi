@@ -2,8 +2,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { CoffeeLogo, Search, Message, ProfileNav } from "../assets";
-function NavbarMain({ home, product, cart, history, auth, img }) {
+import { CoffeeLogo, Message, ProfileNav } from "../assets";
+import Search from "./Search";
+function NavbarMain({ home, product, cart, history, auth, img,
+  onChange,
+  onKeyDown,
+  value,
+  onClickSearch }) {
 
   return (
     <>
@@ -26,7 +31,7 @@ function NavbarMain({ home, product, cart, history, auth, img }) {
               <Link className={cart} to="/payment">Your Cart</Link>
             </li>
             <li>
-              <Link className={history} to="">History</Link>
+              <Link className={history} to="/history">History</Link>
             </li>
 
           </ul>
@@ -35,9 +40,7 @@ function NavbarMain({ home, product, cart, history, auth, img }) {
           {auth.token !== null ? (
             <>
               <div>
-                <Link>
-                  <img src={Search} alt="" />
-                </Link>
+                <Search onClickSearch={onClickSearch} value={value} onKeyDown={onKeyDown} onChange={onChange} />
               </div>
               <div>
                 <Link to="/chats">
@@ -45,7 +48,7 @@ function NavbarMain({ home, product, cart, history, auth, img }) {
                 </Link>
               </div>
               <div >
-                <Link>
+                <Link to="/profile">
                   <img src={img ? img : ProfileNav} className="rounded-full" alt="Profile Nav" />
                 </Link>
               </div>

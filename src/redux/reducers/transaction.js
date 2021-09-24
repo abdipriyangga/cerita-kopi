@@ -2,7 +2,8 @@
 const initialState = {
   data: [],
   sccMsg: "",
-  errMsg: ""
+  errMsg: "",
+  history: [],
 };
 
 const transaction = (state = initialState, action) => {
@@ -25,6 +26,11 @@ const transaction = (state = initialState, action) => {
       return {
         ...state,
         data: [],
+      };
+    case "GET_HISTORY_TRANSACTIONS":
+      return {
+        ...state,
+        history: action.payload,
       };
     default: {
       return {

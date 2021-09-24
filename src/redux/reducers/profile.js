@@ -1,18 +1,18 @@
 /* eslint-disable indent */
 const initialState = {
-  users: [],
+  data: {},
 };
 
-const users = (state = initialState, action) => {
+const profile = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_GET_USER":
+    case "SET_UPDATE_USER_PROFILE":
       return {
         ...state,
-        users: action.payload,
+        data: action.payload,
       };
     default:
       return { ...state };
   }
 };
 
-export default users;
+export default profile;

@@ -40,6 +40,9 @@ module.exports = {
         "105": "60rem"
       },
       margin: {
+        "81": "21rem",
+        "82": "22rem",
+        "95": "27rem",
         "97": "28rem",
         "98": "32rem",
         "99": "36rem",
@@ -56,7 +59,8 @@ module.exports = {
       "auth": "url('/src/assets/images/sideImg.png')",
       "chat": "url('/src/assets/images/bgchats.png')",
       "payment": "url('/src/assets/images/bg-payment.png')",
-      "profile": "url('/src/assets/images/bg-profile.png')"
+      "profile": "url('/src/assets/images/bg-profile.png')",
+      "history": "url('/src/assets/images/bg-history.png')",
     },
     backgroundSize: {
       auto: "auto",

@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { getUser } from "../redux/actions/users";
 import CardItemTransaction from "../components/CardItemTransaction";
 import { createTransaction } from "../redux/actions/transaction";
-import { Bank, Card, Cod } from "../assets";
+import { Bank, Card, Cod, EmptyCart } from "../assets";
 import { Link } from "react-router-dom";
 // import { ProductImg } from "../assets";
 // const { REACT_APP_URL: URL } = process.env;
@@ -41,15 +41,23 @@ const Payment = (props) => {
 
   return (
     <>
-      <header className="px-32 sticky top-0 bg-white">
-        <NavbarMain />
+      <header className="px-32 bg-white">
+        <NavbarMain
+          home="text-gray-500"
+          product="text-gray-500"
+          cart="text-yellow-900 font-bold"
+          history="text-gray-500"
+        />
       </header>
       <main className="bg-payment bg-cover w-full h-105 bg-center px-52 flex-row flex">
         <section>
           <h3 className="w-56 font-bold text-3xl text-white py-10">Checkout your item now!</h3>
           {items.length < 1 ? (
             <div className="w-83 bg-white h-98 py-10 rounded-md my-3">
-              <h4 className="font-bold text-lg text-center">Sorry you dont have any order</h4>
+              <h4 className="font-bold text-lg text-center">Sorry you dont have item order</h4>
+              <div>
+                <img src={EmptyCart} />
+              </div>
             </div>
           ) : (
             <>
@@ -57,9 +65,9 @@ const Payment = (props) => {
                 <h4 className="font-bold text-lg text-center">Order Summary</h4>
                 <div className="mt-0">
                   {items.map((product) => {
-                    console.log("====================================");
+                    {/* console.log("====================================");
                     console.log("this is product name: ", product);
-                    console.log("====================================");
+                    console.log("===================================="); */}
                     return <CardItemTransaction
                       img={product?.images}
                       name={product?.item_name}

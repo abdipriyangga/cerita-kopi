@@ -12,5 +12,6 @@ import DefaultPic from "../assets/images/Default_pic.svg";
 import Card from "../assets/icons/card.png";
 import Bank from "../assets/icons/Bank.png";
 import Cod from "../assets/icons/Cod.png";
-
-export { CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork, BackgroundChat, DefaultPic, Card, Bank, Cod };
+import ProductCoupon from "../assets/images/product-coupon.png";
+import EmptyCart from "../assets/icons/empty-cart.png";
+export { CoffeeLogo, Banner, Search, Message, ProfileNav, ProductImg, Google, ProductCold, Teamwork, BackgroundChat, DefaultPic, Card, Bank, Cod, ProductCoupon, EmptyCart };

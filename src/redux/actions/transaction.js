@@ -45,4 +45,15 @@ const createTransaction = (data, token) => {
   };
 };
 
-export { createTransaction };
+const getHistory = (token) => {
+  return async (dispatch) => {
+    console.log("token user: ", token);
+    const { data } = await http(token).get(`${URL}/transactions`);
+    console.log("data history: ", data.results);
+    dispatch({
+      type: "GET_HISTORY_TRANSACTIONS",
+      payload: data.results
+    });
+  };
+};
+export { createTransaction, getHistory };
