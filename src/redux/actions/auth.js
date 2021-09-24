@@ -47,7 +47,11 @@ const authRegister = (email, password, phone_number) => {
       const { data } = await http().post(`${URL}/auth/signup`, form.toString());
       dispatch({
         type: "AUTH_REGISTER",
-        payload: data.message
+        payload: Swal.fire({
+          icon: "success",
+          title: "Yeay...",
+          text: data.message,
+        })
       });
     }
     catch (err) {

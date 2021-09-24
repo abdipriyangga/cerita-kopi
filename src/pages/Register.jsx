@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { CoffeeLogo, Google } from "../assets";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toggleAuth, authRegister } from "../redux/actions/auth";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function Register(props) {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
-
-  const { token } = props.auth;
+  const { isRegister } = props.auth;
+  // const { token } = props.auth;
   useEffect(() => {
     props.toggleAuth();
-    if (token !== null) {
-      history.push("/home");
+    if (isRegister) {
+      history.push("/login");
     }
   }, []);
   const onRegister = (e) => {
@@ -28,7 +28,7 @@ function Register(props) {
     console.log(phone_number);
   };
 
-  
+
   return (
     <>
       <div className="flex flex-row">
