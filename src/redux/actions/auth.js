@@ -22,6 +22,12 @@ const authLogin = (email, password) => {
         type: "AUTH_LOGIN",
         payload: data.results.token
       });
+      Swal.fire({
+        icon: "success",
+        title: "Yeay...",
+        text: data.message,
+        timer: 2000
+      });
     }
     catch (err) {
       dispatch({
@@ -51,13 +57,19 @@ const authRegister = (email, password, phone_number) => {
           icon: "success",
           title: "Yeay...",
           text: data.message,
+          timer: 2000
         })
       });
     }
     catch (err) {
       dispatch({
         type: "AUTH_REGISTER_FAILED",
-        payload: err.response.data.message
+        payload: Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.message,
+          timer: 2000
+        })
       });
     }
   };

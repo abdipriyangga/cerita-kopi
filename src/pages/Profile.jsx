@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable indent */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavbarMain from "../components/NavbarMain";
 import Footer from "../components/Footer";
 import { ProfileNav } from "../assets";
@@ -14,13 +15,19 @@ const Profile = (props) => {
   const { users } = props.users;
   // console.log("ini data user: ", users);
   const { history } = props.transaction;
+  const fileInputHide = useRef(null);
   const totalHistoryTrx = history?.length;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
+  const [file, setFile] = useState(null);
 
+  const onHandleClick = (e) => {
+    setFile(fileInputHide.current.click());
+  };
   useEffect(() => {
+    console.log("file: ", file);
     props.getUser(props.auth.token);
     props.getHistory(props.auth.token);
     users.map((user) => {
@@ -28,6 +35,7 @@ const Profile = (props) => {
       setEmail(user.email);
       setAddress(user.address);
       setPhoneNumber(user.phone_number);
+      setFile(user.images || ProfileNav);
       console.log("data user useEffect", user);
     });
   }, []);
@@ -36,6 +44,7 @@ const Profile = (props) => {
     email,
     address,
     phone_number,
+    file
   };
 
   console.log("data dari pages: ", updateData);
@@ -57,12 +66,18 @@ const Profile = (props) => {
                 <>
                   <div className="bg-white w-60 h-65 rounded-md border-b-8 border-yellow-900">
                     <div className="flex justify-center mt-10">
-                      <img src={ProfileNav} className="md:w-20 w-14 md:h-20 h-14 rounded-full" />
-                      <button className="rounded-full bg-yellow-900 w-7 h-7 ml-14 mt-14 absolute">
+                      <img src={user.images === null || undefined ? ProfileNav : user.images} className="md:w-20 w-14 md:h-20 h-14 rounded-full" />
+                      <button onClick={onHandleClick} className="rounded-full bg-yellow-900 w-7 h-7 ml-14 mt-14 absolute">
                         <FontAwesomeIcon icon={faPencilAlt} className="text-white w-10 mt-1 text-base" />
                       </button>
                     </div>
                     <div className="text-center mt-4">
+                      <input
+                        type="file"
+                        ref={fileInputHide}
+                        onChange={(value) => setFile(value.target.files[0])}
+                        style={{ display: "none" }}
+                      />
                       <p className="font-bold text-sm">{user.name}</p>
                       <p className="text-xs text-gray-400">{user.email}</p>
                     </div>
@@ -103,82 +118,49 @@ const Profile = (props) => {
                   <FontAwesomeIcon icon={faPencilAlt} className="text-white w-10 mt-1 text-base" />
                 </button>
               </div>
-              {/* {users.map((user) => {
-                <>
-                  <div className="flex flex-row">
-                    <div className="ml-5">
-                      <p className="text-sm text-gray-500 font-medium mb-2">Display Name: </p>
-                      <input className="border-b-2 border-black w-56 focus:outline-none" value={name} onChange={(value) => setName(value.target.value)} />
+              {users.map((user) => {
+                return (
+                  <>
+                    <div className="flex flex-row">
+                      <div className="ml-5">
+                        <p className="text-sm text-gray-500 font-medium mb-2">Display Name: </p>
+                        <input className="border-b-2 border-black w-56 focus:outline-none" value={name} onChange={(value) => setName(value.target.value)} />
+                      </div>
+                      <div className="ml-7">
+                        <p className="text-sm text-gray-500 font-medium mb-2">DD/MM/YY </p>
+                        <input className=" border-b-2 border-black w-56 focus:outline-none" type="date" />
+                      </div>
                     </div>
-                    <div className="ml-7">
-                      <p className="text-sm text-gray-500 font-medium mb-2">DD/MM/YY </p>
-                      <input className=" border-b-2 border-black w-56 focus:outline-none" type="date" />
+                    <div className="flex flex-row">
+                      <div className="ml-7 mt-7">
+                        <p className="text-sm text-gray-500 font-medium mb-2">First Name: </p>
+                        <input className=" border-b-2 border-black w-56 focus:outline-none" value={user.name.split(" ")[0]} />
+                      </div>
+                      <div className="mt-6">
+                        <div className="flex flex-row items-center ml-5 space-x-4">
+                          <label className="radioGender m-3 ">
+                            <input type="radio" name="gender" />
+                            <span className="item"></span>
+                          </label>
+                          <span className="font-semibold">Male</span>
+                        </div>
+                        <div className="flex flex-row items-center ml-5 space-x-4">
+                          <label className="radioGender m-3 ">
+                            <input type="radio" name="gender" />
+                            <span className="item"></span>
+                          </label>
+                          <span className="font-semibold">Female</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex flex-row">
                     <div className="ml-7 mt-7">
-                      <p className="text-sm text-gray-500 font-medium mb-2">First Name: </p>
-                      <input className=" border-b-2 border-black w-56 focus:outline-none" value={user.name} />
+                      <p className="text-sm text-gray-500 font-medium mb-2">Last Name: </p>
+                      <input value={user.name.split(" ")[1]} className=" border-b-2 border-black w-56 focus:outline-none" />
                     </div>
-                    <div className="mt-6">
-                      <div className="flex flex-row items-center ml-5 space-x-4">
-                        <label className="radioGender m-3 ">
-                          <input type="radio" name="gender" />
-                          <span className="item"></span>
-                        </label>
-                        <span className="font-semibold">Male</span>
-                      </div>
-                      <div className="flex flex-row items-center ml-5 space-x-4">
-                        <label className="radioGender m-3 ">
-                          <input type="radio" name="gender" />
-                          <span className="item"></span>
-                        </label>
-                        <span className="font-semibold">Female</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="ml-7 mt-7">
-                    <p className="text-sm text-gray-500 font-medium mb-2">Last Name: </p>
-                    <input value={user.name} className=" border-b-2 border-black w-56 focus:outline-none" />
-                  </div>
-                </>;
-              })} */}
-              <div className="flex flex-row">
-                <div className="ml-5">
-                  <p className="text-sm text-gray-500 font-medium mb-2">Display Name: </p>
-                  <input className="border-b-2 border-black w-56 focus:outline-none" onChange={(value) => setName(value.target.value)} />
-                </div>
-                <div className="ml-7">
-                  <p className="text-sm text-gray-500 font-medium mb-2">DD/MM/YY </p>
-                  <input className=" border-b-2 border-black w-56 focus:outline-none" type="date" />
-                </div>
-              </div>
-              <div className="flex flex-row">
-                <div className="ml-7 mt-7">
-                  <p className="text-sm text-gray-500 font-medium mb-2">First Name: </p>
-                  <input className=" border-b-2 border-black w-56 focus:outline-none" />
-                </div>
-                <div className="mt-6">
-                  <div className="flex flex-row items-center ml-5 space-x-4">
-                    <label className="radioGender m-3 ">
-                      <input type="radio" name="gender" />
-                      <span className="item"></span>
-                    </label>
-                    <span className="font-semibold">Male</span>
-                  </div>
-                  <div className="flex flex-row items-center ml-5 space-x-4">
-                    <label className="radioGender m-3 ">
-                      <input type="radio" name="gender" />
-                      <span className="item"></span>
-                    </label>
-                    <span className="font-semibold">Female</span>
-                  </div>
-                </div>
-              </div>
-              <div className="ml-7 mt-7">
-                <p className="text-sm text-gray-500 font-medium mb-2">Last Name: </p>
-                <input className=" border-b-2 border-black w-56 focus:outline-none" />
-              </div>
+                  </>
+                );
+              })}
+
             </div>
             <div className="mx-20 my-20 w-72">
               <div className=" mx-8 w-2/3">

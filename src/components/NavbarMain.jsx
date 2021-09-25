@@ -1,14 +1,22 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { CoffeeLogo, Message, ProfileNav } from "../assets";
 import Search from "./Search";
-function NavbarMain({ home, product, cart, history, auth, img,
+import { getUser } from "../redux/actions/users";
+
+function NavbarMain({ home, product, cart, history, auth, users, img,
   onChange,
   onKeyDown,
   value,
   onClickSearch }) {
+  useEffect(() => {
+    console.log("====================================");
+    console.log("user: ", users.users);
+    console.log("====================================");
+    getUser(auth.token);
+  });
 
   return (
     <>
@@ -49,7 +57,14 @@ function NavbarMain({ home, product, cart, history, auth, img,
               </div>
               <div >
                 <Link to="/profile">
-                  <img src={img ? img : ProfileNav} className="rounded-full" alt="Profile Nav" />
+                  {users.users.map((user) => {
+                    return user.images !== null ? (
+                      <img key={user.id} src={user.images || ProfileNav} className="rounded-full w-12 h-12" alt="Profile Nav" />
+                    ) : (
+                      <img key={user.id} src={ProfileNav} className="rounded-full w-12 h-12" alt="Profile Nav" />
+                    );
+                  })}
+                  {/* <img src={ProfileNav} className="rounded-full" alt="Profile Nav" /> */}
                 </Link>
               </div>
 
@@ -76,7 +91,11 @@ function NavbarMain({ home, product, cart, history, auth, img,
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  users: state.users
 });
 
-export default connect(mapStateToProps)(NavbarMain);
+const mapDispatchToProps = {
+  getUser
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarMain);

@@ -15,11 +15,15 @@ const persistAuth = {
   storage,
   key: "auth",
 };
+const persistUsers = {
+  storage,
+  key: "users",
+};
 const reducer = combineReducers({
   carts,
   auth: persistReducer(persistAuth, auth),
   chats,
-  users: users,
+  users: persistReducer(persistUsers, users),
   products,
   category,
   payment,

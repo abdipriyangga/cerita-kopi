@@ -16,16 +16,16 @@ function Register(props) {
   // const { token } = props.auth;
   useEffect(() => {
     props.toggleAuth();
-    if (isRegister) {
-      history.push("/login");
-    }
+    console.log("is register", isRegister);
+
   }, []);
   const onRegister = (e) => {
     e.preventDefault();
     props.authRegister(email, password, phone_number);
-    console.log(email);
-    console.log(password);
-    console.log(phone_number);
+    if (!isRegister) {
+      history.push("/login");
+      console.log("is register", isRegister);
+    }
   };
 
 
