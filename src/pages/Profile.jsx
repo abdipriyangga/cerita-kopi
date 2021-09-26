@@ -47,8 +47,8 @@ const Profile = (props) => {
     file
   };
 
-  console.log("data dari pages: ", updateData);
   const formData = (e) => {
+    console.log("data dari pages Formdata: ", updateData);
     e.preventDefault();
     props.updateUser(updateData, props.auth.token);
   };

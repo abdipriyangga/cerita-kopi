@@ -29,7 +29,11 @@ const updateUser = (data, token) => {
       console.log("ini updateData: ", updateData);
       dispatch({
         type: "SET_UPDATE_USER_PROFILE",
-        payload: updateData,
+        payload: Swal.fire({
+          icon: "success",
+          title: "Yeay!",
+          text: updateData.message
+        }),
       });
       dispatch(getUser(token));
     } catch (error) {
