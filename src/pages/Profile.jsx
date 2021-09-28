@@ -118,6 +118,9 @@ const Profile = (props) => {
                 </button>
               </div>
               {users.map((user) => {
+                console.log("====================================");
+                console.log("users", user);
+                console.log("====================================");
                 return (
                   <>
                     <div className="flex flex-row">
