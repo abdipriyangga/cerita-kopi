@@ -13,7 +13,6 @@ import { getHistory } from "../redux/actions/transaction";
 import { updateUser } from "../redux/actions/profile";
 const Profile = (props) => {
   const { users } = props.users;
-  // console.log("ini data user: ", users);
   const { history } = props.transaction;
   const fileInputHide = useRef(null);
   const totalHistoryTrx = history?.length;

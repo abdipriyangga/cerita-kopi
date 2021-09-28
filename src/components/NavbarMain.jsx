@@ -55,13 +55,10 @@ function NavbarMain({ home, product, cart, history, auth, users, img,
               <div >
                 <Link to="/profile">
                   {users.users.map((user) => {
-                    return user.images !== null ? (
+                    return (
                       <img key={user.id} src={user.images === null || undefined ? ProfileNav : user.images} className="rounded-full w-12 h-12" alt="Profile Nav" />
-                    ) : (
-                      <img key={user.id} src={ProfileNav} className="rounded-full w-12 h-12" alt="Profile Nav" />
                     );
                   })}
-                  {/* <img src={ProfileNav} className="rounded-full" alt="Profile Nav" /> */}
                 </Link>
               </div>
 

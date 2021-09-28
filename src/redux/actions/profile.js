@@ -18,7 +18,6 @@ const updateUser = (data, token) => {
         });
       }
     }
-    console.log("ini data profile", data);
     try {
       form.append("name", data.name);
       form.append("email", data.email);
@@ -26,7 +25,6 @@ const updateUser = (data, token) => {
       form.append("phone_number", data.phone_number);
       form.append("images", data.file);
       const { data: updateData } = await http(token).put(`${URL}/profile`, form);
-      console.log("ini updateData: ", updateData);
       dispatch({
         type: "SET_UPDATE_USER_PROFILE",
         payload: Swal.fire({
