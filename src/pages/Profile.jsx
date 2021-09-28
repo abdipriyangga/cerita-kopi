@@ -121,46 +121,7 @@ const Profile = (props) => {
                 console.log("====================================");
                 console.log("users", user);
                 console.log("====================================");
-                return user.name === null ? (
-                  <>
-                    <div className="flex flex-row">
-                      <div className="ml-5">
-                        <p className="text-sm text-gray-500 font-medium mb-2">Display Name: </p>
-                        <input className="border-b-2 border-black w-56 focus:outline-none" value={name} onChange={(value) => setName(value.target.value)} />
-                      </div>
-                      <div className="ml-7">
-                        <p className="text-sm text-gray-500 font-medium mb-2">DD/MM/YY </p>
-                        <input className=" border-b-2 border-black w-56 focus:outline-none" type="date" />
-                      </div>
-                    </div>
-                    <div className="flex flex-row">
-                      <div className="ml-7 mt-7">
-                        <p className="text-sm text-gray-500 font-medium mb-2">First Name: </p>
-                        <input className=" border-b-2 border-black w-56 focus:outline-none" value={name} />
-                      </div>
-                      <div className="mt-6">
-                        <div className="flex flex-row items-center ml-5 space-x-4">
-                          <label className="radioGender m-3 ">
-                            <input type="radio" name="gender" />
-                            <span className="item"></span>
-                          </label>
-                          <span className="font-semibold">Male</span>
-                        </div>
-                        <div className="flex flex-row items-center ml-5 space-x-4">
-                          <label className="radioGender m-3 ">
-                            <input type="radio" name="gender" />
-                            <span className="item"></span>
-                          </label>
-                          <span className="font-semibold">Female</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="ml-7 mt-7">
-                      <p className="text-sm text-gray-500 font-medium mb-2">Last Name: </p>
-                      <input value={name} className=" border-b-2 border-black w-56 focus:outline-none" />
-                    </div>
-                  </>
-                ) : (
+                return (
                   <>
                     <div className="flex flex-row">
                       <div className="ml-5">
