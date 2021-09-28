@@ -136,7 +136,7 @@ const Profile = (props) => {
                     <div className="flex flex-row">
                       <div className="ml-7 mt-7">
                         <p className="text-sm text-gray-500 font-medium mb-2">First Name: </p>
-                        <input className=" border-b-2 border-black w-56 focus:outline-none" value={user.name.split(" ")[0]} />
+                        <input className=" border-b-2 border-black w-56 focus:outline-none" value={user.name} />
                       </div>
                       <div className="mt-6">
                         <div className="flex flex-row items-center ml-5 space-x-4">
@@ -157,7 +157,7 @@ const Profile = (props) => {
                     </div>
                     <div className="ml-7 mt-7">
                       <p className="text-sm text-gray-500 font-medium mb-2">Last Name: </p>
-                      <input value={user.name.split(" ")[1]} className=" border-b-2 border-black w-56 focus:outline-none" />
+                      <input value={user.name} className=" border-b-2 border-black w-56 focus:outline-none" />
                     </div>
                   </>
                 );
