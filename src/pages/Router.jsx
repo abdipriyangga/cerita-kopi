@@ -11,6 +11,7 @@ import Payment from "./Payment";
 import PrivateRoute from "../components/PrivateRoute";
 import Profile from "./Profile";
 import History from "./History";
+import HistoryDetail from "./HistoryDetail";
 function Router() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function Router() {
         <PrivateRoute component={Payment} path="/payment" exact />
         <PrivateRoute component={Profile} path="/profile" exact />
         <PrivateRoute component={History} path="/history" exact />
+        <PrivateRoute component={HistoryDetail} path="/history/:id" exact />
       </Switch>
     </BrowserRouter>
   );

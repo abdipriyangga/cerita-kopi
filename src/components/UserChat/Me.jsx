@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { DefaultPic } from "../../assets";
 
-function Me({img, name, chat}) {
+function Me({ img, name, chat }) {
   return (
     <div className='bg-white px-8 py-3 rounded-xl flex flex-row items-center'>
       <img src={img !== null ? img : DefaultPic} className="w-16 h-16 object-cover mr-5 rounded-full" />

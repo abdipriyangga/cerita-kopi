@@ -1,20 +1,24 @@
-/* eslint-disable*/
-
-import React, { useEffect } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import NavbarMain from "../components/NavbarMain";
-import { connect } from "react-redux";
-import { getHistory } from "../redux/actions/transaction";
+import { connect, useDispatch } from "react-redux";
+import { getHistory, deleteHistory } from "../redux/actions/transaction";
 import { authLogout } from "../redux/actions/auth";
 import { useHistory } from "react-router-dom";
 import CardHistory from "../components/CardHistory";
-
+import Swal from "sweetalert2";
+const { REACT_APP_URL: URL } = process.env;
 const History = (props) => {
   const { history } = props.transaction;
+  const [selected, setSelected] = useState("");
+  let histo = useHistory();
+  const dispatch = useDispatch();
   useEffect(() => {
     props.getHistory(props.auth.token);
     console.log("tooken from useEffect: ", props.auth.token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -29,24 +33,30 @@ const History = (props) => {
       </header>
       <main className="bg-history bg-cover w-full h-105 bg-center ">
         <div className="py-16 ml-82">
-          <h3 className="font-bold text-3xl text-white">Let's see what you have bought!</h3>
+          <h3 className="font-bold text-3xl text-white">Lets see what you have bought!</h3>
           <p className="font-normal mt-3 mx-40 text-sm text-white"> Select item to delete</p>
         </div>
         <div>
 
         </div>
         <section className="grid grid-flow-row md:grid-cols-3 grid-cols-1 gap-5 md:px-32 px-16 overflow-y-scroll no-scrollbar">
-          {history?.map((product) => {
-            const total = product.total + product.tax + product.shipping_cost
+          {history?.map((product, idx) => {
+            console.log("====================================");
+            console.log("IDX: ", idx);
+            console.log("====================================");
             return (
-              <CardHistory
-                img={product.images}
-                to={`/history`}
-                item_name={product.item_name}
-                code={product.code_transaction}
-                total={total.toLocaleString("en")}
-                payment={product.payment_method} />
-            )
+              <>
+                <CardHistory
+                  key={product.id}
+                  img={`${URL}${product.images}`}
+                  to={`/history/${product.id}`}
+                  item_name={product.item_name}
+                  total={product.total.toLocaleString("en")}
+                  payment={product.payment_method}
+                />
+              </>
+
+            );
           })}
         </section>
       </main>
@@ -63,6 +73,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   authLogout,
-  getHistory
+  getHistory,
+  deleteHistory
 };
 export default connect(mapStateToProps, mapDispatchToProps)(History);

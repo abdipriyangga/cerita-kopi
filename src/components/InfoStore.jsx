@@ -2,7 +2,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function InfoStore({icon, numValue, label}) {
+function InfoStore({ icon, numValue, label }) {
   return (
     <div className="flex flex-row justify-center items-center space-x-5">
       <FontAwesomeIcon icon={icon} className="bg-yellow-400" />

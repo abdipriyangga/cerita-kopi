@@ -1,5 +1,11 @@
 /* eslint-disable no-undef */
 module.exports = {
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true,
+    "requireConfigFile": false,
+  },
   "env": {
     "browser": true,
     "es2021": true
@@ -8,24 +14,17 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended"
   ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
   "plugins": [
     "react"
   ],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
+    "template-curly-spacing": "off",
+    "indent": ["error", 2, {
+      "ignoredNodes": ["TemplateLiteral"]
+    }],
     "linebreak-style": [
       "error",
-      "unix"
+      "windows"
     ],
     "quotes": [
       "error",
@@ -34,8 +33,6 @@ module.exports = {
     "semi": [
       "error",
       "always"
-    ],
-    "react/prop-types": "off"
-  },
-  "parser": "babel-eslint"
+    ]
+  }
 };

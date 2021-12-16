@@ -23,8 +23,8 @@ function Home() {
           </h2>
           <p className="text-white text-lg font-bold leading-relaxed tracking-wide ">
             We provide high quality beans, good taste, and healthy <br />
-              meals made by love just for you. Start your day with us <br /> for
-              a bigger smile!
+            meals made by love just for you. Start your day with us <br /> for
+            a bigger smile!
           </p>
           <div className="w-60">
             <button className="focus:outline-none text-red-900 font-bold text-lg bg-yellow-400 px-16 py-4 rounded-lg w-full">Get Started</button>

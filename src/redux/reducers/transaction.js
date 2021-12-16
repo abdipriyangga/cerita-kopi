@@ -4,6 +4,8 @@ const initialState = {
   sccMsg: "",
   errMsg: "",
   history: [],
+  items: [],
+  detail: {},
 };
 
 const transaction = (state = initialState, action) => {
@@ -25,13 +27,24 @@ const transaction = (state = initialState, action) => {
     case "SET_CLEAR_PRODUCTS":
       return {
         ...state,
-        data: [],
+        items: [],
       };
     case "GET_HISTORY_TRANSACTIONS":
       return {
         ...state,
         history: action.payload,
       };
+    case "SET_GET_HISTORY_DETAILS":
+      return {
+        ...state,
+        detail: action.payload,
+      };
+    case "DELETE_HISTORY": {
+      return {
+        ...state,
+        sccMsg: action.payload
+      };
+    }
     default: {
       return {
         ...state

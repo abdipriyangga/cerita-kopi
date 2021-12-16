@@ -56,4 +56,40 @@ const getHistory = (token) => {
     });
   };
 };
-export { createTransaction, getHistory };
+
+const getHistoryDetail = (token, id) => {
+  return async (dispatch) => {
+    console.log("token user: ", token);
+    const { data } = await http(token).get(`${URL}/transactions/${id}`);
+    console.log("data history: ", data.results);
+    dispatch({
+      type: "SET_GET_HISTORY_DETAILS",
+      payload: data.results
+    });
+  };
+};
+
+const deleteHistory = (token, id) => {
+  return async dispatch => {
+    try {
+      const { data } = await http(token).delete(
+        `${URL}/transactions/${id}`,
+      );
+      console.log("====================================");
+      console.log("DELETE ACTION: ", data);
+      console.log("====================================");
+      dispatch({
+        type: "DELETE_HISTORY",
+        payload: data.results,
+      });
+    } catch (err) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Delete Failed",
+        timer: 2000
+      });
+    }
+  };
+};
+export { createTransaction, getHistory, deleteHistory, getHistoryDetail };

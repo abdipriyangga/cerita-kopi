@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-key */
 import React, { useEffect } from "react";
@@ -11,14 +12,17 @@ import { getUser } from "../redux/actions/users";
 import CardItemTransaction from "../components/CardItemTransaction";
 import { createTransaction } from "../redux/actions/transaction";
 import { Bank, Card, Cod, EmptyCart } from "../assets";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import { ProductImg } from "../assets";
 // const { REACT_APP_URL: URL } = process.env;
 const Payment = (props) => {
+  let history = useHistory();
   const onCheckout = () => {
     const { items } = props.carts;
     const { token } = props.auth;
     props.createTransaction(items, token);
+    history.push("/items");
+
   };
   // const data = items;
   // console.log("ini data item: ", data);
@@ -108,19 +112,15 @@ const Payment = (props) => {
                     <FontAwesomeIcon icon={faPencilAlt} className="text-white ml-60 mt-1 text-base" />
                   </Link>
                 </div>
-                {users.map((user) => {
-                  return (
-                    <section className="bg-white w-83 h-48 rounded-md py-5 px-8">
-                      <div>
-                        <span className="font-bold">Delivery</span> <span>to {user.name} </span>
-                        <p>{user.address} </p>
-                      </div>
-                      <div className="mt-8">
-                        <span>{user.phone_number}</span>
-                      </div>
-                    </section>
-                  );
-                })}
+                <section className="bg-white w-83 h-48 rounded-md py-5 px-8">
+                  <div>
+                    <span className="font-bold">Delivery</span> <span>to {users.name} </span>
+                    <p>{users.address} </p>
+                  </div>
+                  <div className="mt-8">
+                    <span>{users.phone_number}</span>
+                  </div>
+                </section>
               </>
             }
 

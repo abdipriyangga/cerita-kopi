@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { DefaultPic } from "../../assets";
 
-function Other({img, name, onClick, chat}) {
+function Other({ img, name, onClick, chat }) {
   return (
     <div>
       <div className='bg-white px-8 py-3 rounded-xl flex flex-row items-center justify-end'>

@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
-function UserList({name, chat, images, onClick, onDelete, me}) {
+function UserList({ name, chat, images, onClick, onDelete, me }) {
 
-  if(me){
+  if (me) {
     return (
       <button onClick={onClick} className="flex w-80 flex-row mt-5 items-center border-b-2 pb-3 border-white focus:outline-none">
         <img src={images} className="w-16 h-16 object-cover mr-5 rounded-full bg-white" />
@@ -20,7 +21,7 @@ function UserList({name, chat, images, onClick, onDelete, me}) {
       </button>
     );
   } else {
-    return(
+    return (
       <div></div>
     );
   }

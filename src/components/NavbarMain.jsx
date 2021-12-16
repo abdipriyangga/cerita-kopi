@@ -6,7 +6,7 @@ import { CoffeeLogo, Message, ProfileNav } from "../assets";
 import Search from "./Search";
 import { getUser } from "../redux/actions/users";
 
-function NavbarMain({ home, product, cart, history, auth, users, img,
+function NavbarMain({ home, product, cart, history, auth, users,
   onChange,
   onKeyDown,
   value,
@@ -54,11 +54,7 @@ function NavbarMain({ home, product, cart, history, auth, users, img,
               </div>
               <div >
                 <Link to="/profile">
-                  {users.users.map((user) => {
-                    return (
-                      <img key={user.id} src={user.images === null || undefined ? ProfileNav : user.images} className="rounded-full w-12 h-12" alt="Profile Nav" />
-                    );
-                  })}
+                  <img key={users.users.id} src={users.users.images === null || undefined ? ProfileNav : users.users.images} className="rounded-full w-12 h-12" alt="Profile Nav" />
                 </Link>
               </div>
 
@@ -77,7 +73,7 @@ function NavbarMain({ home, product, cart, history, auth, users, img,
                 </Link>
               </div>
             </>
-          )};
+          )}
         </div>
       </nav>
     </>

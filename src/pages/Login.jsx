@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { toggleAuth, authLogin } from "../redux/actions/auth";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { CoffeeLogo, Google } from "../assets";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 function Login(props) {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {token} = props.auth;
+  const { token } = props.auth;
 
-  const isLogin =  () => {
-    if(token !== null) {
+  const isLogin = () => {
+    if (token !== null) {
       history.push("/");
     }
   };

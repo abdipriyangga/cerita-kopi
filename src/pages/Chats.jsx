@@ -2,13 +2,13 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import NavbarMain from "../components/NavbarMain";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faCamera, faPaperPlane} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faCamera, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert";
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
 import UserList from "../components/UserList";
 import { getUserChat, getChat, sendChat, deleteChat, getAllUser } from "../redux/actions/chat";
 import { DefaultPic } from "../assets";
@@ -27,7 +27,7 @@ function Chats(props) {
   const messageEnd = React.useRef(null);
 
   const onScroll = () => {
-    if (messageEnd && messageEnd.current){
+    if (messageEnd && messageEnd.current) {
       messageEnd.current.scrollIntoView({
         behavior: "smooth",
         block: "nearest",
@@ -45,7 +45,7 @@ function Chats(props) {
       props.getChat(props.auth.token, data.sender);
       props.getUserChat(props.auth.token);
     });
-    
+
   }, [onScroll()]);
 
   const chooseChat = (res) => {
@@ -115,7 +115,7 @@ function Chats(props) {
   };
 
   const onEnterSearch = (e) => {
-    if (e.key === "Enter"){
+    if (e.key === "Enter") {
       console.log(search);
       props.getAllUser(props.auth.token, search);
     }
@@ -148,7 +148,7 @@ function Chats(props) {
             <div className="py-5">
               <div className="overflow-y-auto h-65 ">
                 {
-                  search.length <= 0  ?
+                  search.length <= 0 ?
                     users.message?.map((res) => {
                       const me = props.users.id !== res.id_users;
                       return (
@@ -164,7 +164,7 @@ function Chats(props) {
                     props.chats.allUser.map((res) => {
                       console.log("user: ", props.users.users[0].id);
                       const me = props.users.users[0].id !== res.id_users;
-                      return(
+                      return (
                         <UserList
                           me={me}
                           onClick={() => chooseOtherChat(res)}
@@ -188,7 +188,7 @@ function Chats(props) {
               <div className="space-y-3 overflow-y-auto h-32 flex-1">
                 {props.chats.chats.message?.map((res) => {
                   const me = props.users.phone_number === res.sender;
-                  console.log("chat: ", props.chats.chats.message );
+                  console.log("chat: ", props.chats.chats.message);
                   return (
                     <ChatItem
                       onClick={() => onDelete(res)}
@@ -208,7 +208,7 @@ function Chats(props) {
                   );
                 })}
                 <div ref={messageEnd}>
-                .
+                  .
                 </div>
               </div>
               <form
