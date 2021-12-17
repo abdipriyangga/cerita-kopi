@@ -22,10 +22,7 @@ module.exports = {
     "indent": ["error", 2, {
       "ignoredNodes": ["TemplateLiteral"]
     }],
-    "linebreak-style": [
-      "error",
-      "windows"
-    ],
+    "linebreak-style": 0,
     "quotes": [
       "error",
       "double"
