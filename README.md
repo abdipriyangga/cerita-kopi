@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Website Coffee Shop with name Cerita Kopi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Screenshoot
 
-## Available Scripts
+<img src="https://user-images.githubusercontent.com/60294028/146499448-23596279-ec5d-41fe-b9bb-c9b3a85f2f3d.PNG" width="30%"></img> <img src="https://user-images.githubusercontent.com/60294028/146499349-28547db4-8123-41e6-bd50-bf1a991298a8.PNG" width="30%"></img> <img src="https://user-images.githubusercontent.com/60294028/146499392-8bb443f9-89ad-4b60-a667-34dcf28aa7d9.PNG" width="30%"></img> <img src="https://user-images.githubusercontent.com/60294028/146499412-edd26a26-bbab-4c84-930c-0dbdd901f922.PNG" width="30%"></img> <img src="https://user-images.githubusercontent.com/60294028/146499429-5ce19ca0-60ec-4ef4-9f8c-6f86ea59be64.PNG" width="30%"></img>
 
-In the project directory, you can run:
+## About
 
-### `npm start`
+A web-based application that provides food and beverage purchasing services, especially coffee. Serves as
+Fullstack using React JS, mysql, and tailwind css technologies. In this application there are features for
+ordering food and drinks, transaction items to be purchased, and there is also a chat for fellow customers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Website Features:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Register
+- Login
+- Transaction Product
+- Search Product
+- Delete History
+- Update Profile
+- Logout
 
-### `npm test`
+## Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[![React v17.0.2](https://img.shields.io/badge/React%20-v17.0.2-brightgreen.svg?style=flat)](https://github.com/facebook/react)
+[![Tailwind v3.0.0](https://img.shields.io/badge/Tailwind%20-v2.1.4-blue.svg?style=flat)](https://tailwindcss.com/docs/installation)
 
-### `npm run build`
+## Requirements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. [Node Js](https://nodejs.org/en/)
+2. Node_modules npm install or yarn install
+3. Backend API Coffee Shop [here](https://github.com/abdipriyangga/Ceritakopi-Backend.git)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Download this Project or you can type `git clone https://github.com/abdipriyangga/cerita-kopi.git`
+2. Open app's directory in CMD or Terminal
+3. Type npm install or yarn install
+4. Add .env file at root folder project
 
-### `npm run eject`
+#### `REACT_APP_URL=http://localhost:8090`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+5. yarn start or npm start
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Axios](https://axios-http.com/docs/api_intro)
+- [Redux](https://redux.js.org/)
+- [React Redux](https://react-redux.js.org/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+© [Muhammad Abdi Priyangga](https://github.com/abdipriyangga)
