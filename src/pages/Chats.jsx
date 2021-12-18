@@ -39,7 +39,7 @@ function Chats(props) {
     onScroll();
     props.getUserChat(props.auth.token);
     props.getAllUser(props.auth.token, "");
-    console.log("users : ", users.message);
+    console.log("users : ", users);
     console.log("phone: ", props.users.users.phone_number);
     socket.on(props.users.users, (data) => {
       props.getChat(props.auth.token, data.sender);
@@ -187,13 +187,19 @@ function Chats(props) {
               </div>
               <div className="space-y-3 overflow-y-auto h-32 flex-1">
                 {props.chats.chats.message?.map((res) => {
-                  const me = props.users.phone_number === res.sender;
+                  const me = props.users.users.phone_number === res.sender;
+                  {/* const other = props.users.phone_number === res.recipient;
                   console.log("chat: ", props.chats.chats.message);
+                  console.log("IN CHAT: ", props.chats.chats);
+                  console.log("IN USERS: ", props.users);
+                  console.log("IN RES: ", me);
+                  console.log("IN OTHER: ", other); */}
                   return (
                     <ChatItem
                       onClick={() => onDelete(res)}
                       me={!me}
                       chat={res.message}
+
                       name={
                         me
                           ? props.chats.chats.sender.name

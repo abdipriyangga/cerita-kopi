@@ -8,7 +8,8 @@ function ChatItem({ me, img, name, chat, onClick }) {
     return (
       <Me img={img} name={name} chat={chat} />
     );
-  } else {
+  }
+  else if (!me) {
     return (
       <Other img={img} name={name} chat={chat} onClick={onClick} />
     );
