@@ -185,7 +185,7 @@ function Chats(props) {
                   {name}
                 </h3>
               </div>
-              <div className="space-y-3 overflow-y-auto h-32 flex-1">
+              <div className="space-y-2 overflow-y-scroll overscroll-none h-32 flex-1">
                 {props.chats.chats.message?.map((res) => {
                   const me = props.users.users.phone_number === res.sender;
                   {/* const other = props.users.phone_number === res.recipient;
