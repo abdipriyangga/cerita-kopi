@@ -64,17 +64,17 @@ const HistoryDetail = (props) => {
           <h5 className="font-semibold p-5 text-center underline">INVOICE</h5>
           <div className="p-5 flex flex-row space-x-12">
             <div>
-              <img className="w-48 h-44 mr-5 rounded-md" src={detail[0].images === null || undefined ? ProductImg : `${URL}${detail[0].images}`} />
+              <img className="w-48 h-44 mr-5 rounded-md" src={detail[0]?.images === null || undefined ? ProductImg : `${URL}${detail[0]?.images}`} />
             </div>
             <div className="text-justify">
-              <p className="font-semibold text-md">Code Transaction: {detail[0].code_transaction}</p>
-              <p className="font-semibold text-md">Product Name: {detail[0].name}</p>
-              <p className="font-semibold text-md">Price: {detail[0].price}</p>
-              <p className="font-semibold text-md">Amount: {detail[0].amount}</p>
-              <p className="font-semibold text-md">Tax: {detail[0].tax}</p>
-              <p className="font-semibold text-md">Shipping Cost: {detail[0].shipping_cost}</p>
-              <p className="font-semibold text-md">Payment Method: {detail[0].payment_method}</p>
-              <p className="font-semibold text-md">Total: {detail[0].total}</p>
+              <p className="font-semibold text-md">Code Transaction: {detail[0]?.code_transaction}</p>
+              <p className="font-semibold text-md">Product Name: {detail[0]?.name}</p>
+              <p className="font-semibold text-md">Price: {detail[0]?.price}</p>
+              <p className="font-semibold text-md">Amount: {detail[0]?.amount}</p>
+              <p className="font-semibold text-md">Tax: {detail[0]?.tax}</p>
+              <p className="font-semibold text-md">Shipping Cost: {detail[0]?.shipping_cost}</p>
+              <p className="font-semibold text-md">Payment Method: {detail[0]?.payment_method}</p>
+              <p className="font-semibold text-md">Total: {detail[0]?.total}</p>
             </div>
           </div>
           <div className="flex justify-end p-5">

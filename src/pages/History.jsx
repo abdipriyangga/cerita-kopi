@@ -13,12 +13,14 @@ import Swal from "sweetalert2";
 const { REACT_APP_URL: URL } = process.env;
 const History = (props) => {
   const { history } = props.transaction;
+  const { detail } = props.transaction;
   const [selected, setSelected] = useState("");
   let histo = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     props.getHistory(props.auth.token);
     console.log("tooken from useEffect: ", props.auth.token);
+    console.log("DETAIL: ", detail);
   }, []);
 
   return (
@@ -47,7 +49,7 @@ const History = (props) => {
             return (
               <>
                 <CardHistory
-                  key={product.id}
+                  key={idx}
                   img={`${URL}${product.images}`}
                   to={`/history/${product.id}`}
                   item_name={product.item_name}

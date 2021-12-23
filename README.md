@@ -18,6 +18,7 @@ Website Features:
 - Search Product
 - Delete History
 - Update Profile
+- Chat
 - Logout
 
 ## Built With
@@ -41,6 +42,10 @@ Website Features:
 #### `REACT_APP_URL=http://localhost:8090`
 
 5. yarn start or npm start
+
+## Deploy site
+
+This website deploy on AWS, so if you want testing this web please contact me on email: `mabdipme@gmail.com`
 
 ## Acknowledgements
 

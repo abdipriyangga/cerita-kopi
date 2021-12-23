@@ -37,7 +37,7 @@ function Chats(props) {
 
   useEffect(() => {
     onScroll();
-    props.getUserChat(props.auth.token);
+    props.getUserChat(props.auth.token, props.users.users.phone_number);
     props.getAllUser(props.auth.token, "");
     console.log("users : ", users);
     console.log("phone: ", props.users.users.phone_number);
@@ -185,7 +185,7 @@ function Chats(props) {
                   {name}
                 </h3>
               </div>
-              <div className="space-y-2 overflow-y-scroll overscroll-none h-32 flex-1">
+              <div className="space-y-2 overflow-y-auto h-32 flex-1">
                 {props.chats.chats.message?.map((res) => {
                   const me = props.users.users.phone_number === res.sender;
                   {/* const other = props.users.phone_number === res.recipient;
@@ -213,13 +213,13 @@ function Chats(props) {
                     />
                   );
                 })}
-                <div ref={messageEnd}>
+                <div className="space-y-2 overflow-y-auto h-32 flex-1" ref={messageEnd}>
                   .
                 </div>
               </div>
               <form
                 onSubmit={onSubmit}
-                className="w-full flex-row flex justify-between bg-white px-10 py-4 rounded-xl items-center"
+                className="w-full flex-row flex justify-between bg-white  overflow-y-auto px-10 py-4 rounded-xl items-center"
               >
                 <input
                   type="text"

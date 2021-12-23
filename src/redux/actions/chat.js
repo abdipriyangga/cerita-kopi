@@ -6,7 +6,7 @@ import Swal from "sweetalert";
 const { REACT_APP_URL: URL } = process.env;
 
 
-export const getUserChat = (token) => {
+export const getUserChat = (token, phone_number) => {
   return async (dispatch) => {
     const { data } = await http(token).get(`${URL}/chats/list`);
     dispatch({ type: "GET_USER_CHAT", payload: data.results });

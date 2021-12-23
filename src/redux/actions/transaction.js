@@ -61,7 +61,7 @@ const getHistoryDetail = (token, id) => {
   return async (dispatch) => {
     console.log("token user: ", token);
     const { data } = await http(token).get(`${URL}/transactions/${id}`);
-    console.log("data history: ", data.results);
+    console.log("data history detail: ", data.results);
     dispatch({
       type: "SET_GET_HISTORY_DETAILS",
       payload: data.results
